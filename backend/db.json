@@ -1,0 +1,73 @@
+{
+  "users": [
+    {
+      "id": "1722355171287",
+      "username": "adarsh",
+      "email": "adarsh@gmail.com",
+      "password": "$2a$10$cVroTq6FWzFAmZBse38ZLeN9LPSTxAQ7qbWxdg7hH0E5jIm53bRqK"
+    },
+    {
+      "id": "1722355435618",
+      "username": "ashrith",
+      "email": "ash@gmail.com",
+      "password": "$2a$10$T0FpepVr0pyi.MBB3t8U1.ZBEbgRDLAmuPmIfibwa4Uk391H5Pl6e"
+    },
+    {
+      "id": "1722358747950",
+      "username": "Likki",
+      "email": "likki@gmail.com",
+      "password": "$2a$10$0aTxXSiEaUU.5zfz3JC87eactreWec2E.VO38oX/iyY/5rTpQJ7Vi"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "1722346279898",
+      "description": "money",
+      "amount": 8000,
+      "type": "income",
+      "userId": "1722355171287"
+    },
+    {
+      "id": "1722358054871",
+      "description": "Monthly salary",
+      "amount": 1500,
+      "type": "income",
+      "userId": "1722355435618"
+    },
+    {
+      "id": "1722358118354",
+      "description": "sam",
+      "amount": 2000,
+      "type": "income",
+      "userId": "1722358747950"
+    },
+    {
+      "id": "1722399359336",
+      "description": "rent",
+      "amount": 3098,
+      "type": "expense",
+      "userId": "1722355435618"
+    },
+    {
+      "id": "1722509913397",
+      "description": "qwe",
+      "amount": 123,
+      "type": "income",
+      "userId": "1722358747950"
+    },
+    {
+      "id": "1722509926302",
+      "description": "wer",
+      "amount": 123,
+      "type": "income",
+      "userId": "1722358747950"
+    },
+    {
+      "id": "1722509998947",
+      "description": "dfn",
+      "amount": 567890,
+      "type": "expense",
+      "userId": "1722358747950"
+    }
+  ]
+}

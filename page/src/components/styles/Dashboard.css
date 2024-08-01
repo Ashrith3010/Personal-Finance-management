@@ -1,0 +1,24 @@
+.dashboard {
+    padding: 2rem;
+  }
+  
+  .dashboard h1 {
+    font-size: 2rem;
+  }
+  
+  .dashboard h2 {
+    font-size: 1.5rem;
+  }
+  
+  .dashboard ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .dashboard li {
+    background: #f4f4f4;
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border-radius: 5px;
+  }
+  

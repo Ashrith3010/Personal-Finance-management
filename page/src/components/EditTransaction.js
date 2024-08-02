@@ -15,6 +15,7 @@ function EditTransaction() {
     type: '',
   });
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [message, setMessage] = useState('');
 
   const [editTransaction] = useMutation(EDIT_TRANSACTION, {
     refetchQueries: [
@@ -67,9 +68,13 @@ function EditTransaction() {
           date: selectedDate.toISOString().split('T')[0],
         },
       });
-      navigate('/dashboard');
+      setMessage('Transaction updated successfully.');
+      setTimeout(() => {
+        navigate(formData.type === 'income' ? '/income' : '/expenses');
+      }, 2000); // Navigate after 2 seconds to allow user to see the message
     } catch (error) {
       console.error('Error editing transaction:', error);
+      setMessage('Error updating transaction.');
     }
   };
 
@@ -109,6 +114,11 @@ function EditTransaction() {
         <DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
         <button type="submit">Update Transaction</button>
       </form>
+      {message && (
+        <p className={`message ${message.includes('successfully') ? 'success' : 'error'}`}>
+          {message}
+        </p>
+      )}
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { useNavigate, Link } from 'react-router-dom';
 import { GET_TRANSACTIONS_BY_DATE, DELETE_TRANSACTION } from '../graphql';
 import { FaHome, FaMoneyBillWave, FaPlusCircle } from 'react-icons/fa'; // Import icons
-
+import './styles/ExpenseList.css'
 function ExpenseList() {
   const [month, setMonth] = useState(new Date().getMonth() + 1);
   const [year, setYear] = useState(new Date().getFullYear());

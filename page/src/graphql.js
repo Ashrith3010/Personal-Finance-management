@@ -18,8 +18,12 @@ export const GET_DASHBOARD_DATA = gql`
       amount
       date
     }
+      user(id: $userId) {  # Add this part
+      username
+    }
   }
 `;
+  
 
 // Query to get all transactions (general)
 export const GET_TRANSACTIONS = gql`

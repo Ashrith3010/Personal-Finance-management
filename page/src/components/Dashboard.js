@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import { GET_DASHBOARD_DATA } from '../graphql';
 import Savings from './Savings'; // Ensure Savings component is imported
 import { FaHome, FaMoneyBillWave, FaPlusCircle } from 'react-icons/fa';
+import './styles/Dashboard.css';
 
 const Dashboard = () => {
   const userId = localStorage.getItem('userId');

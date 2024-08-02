@@ -39,8 +39,8 @@
     {
       "id": "1722399359336",
       "description": "rent",
-      "amount": 3098,
-      "type": "expense",
+      "amount": 309,
+      "type": "income",
       "userId": "1722355435618",
       "date": "2024-08-01"
     },
@@ -83,6 +83,14 @@
       "type": "expense",
       "userId": "1722355435618",
       "date": "2024-08-10"
+    },
+    {
+      "id": "1722596674721",
+      "description": "room rent",
+      "amount": 8900,
+      "type": "expense",
+      "userId": "1722355435618",
+      "date": "2024-08-16"
     }
   ]
 }

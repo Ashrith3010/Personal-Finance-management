@@ -1,40 +1,29 @@
-/* Container for side-by-side sections */
 .savings-container {
     display: flex;
-    justify-content: space-between;
-    gap: 20px; /* Adds space between the two sections */
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
-    padding: 20px; /* Add padding around the container */
-    box-sizing: border-box; /* Include padding in the element's total width and height */
+    justify-content: space-around;
+    margin: 20px 0;
   }
   
-  /* Individual section styling */
   .savings-section {
-    flex: 1;
+    border: 1px solid #ccc;
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    width: 45%;
     background-color: #f9f9f9;
-    min-width: 300px; /* Ensures sections don't get too narrow */
+    border-radius: 8px;
   }
   
-  /* Ensure text and form elements are styled appropriately */
   .savings-section h3 {
     margin-top: 0;
   }
   
   .savings-section label {
     display: block;
-    margin-bottom: 10px;
+    margin: 10px 0;
   }
   
-  .savings-section input,
-  .savings-section select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
-    box-sizing: border-box;
+  .savings-section select,
+  .savings-section input {
+    margin-left: 10px;
   }
   
   .savings-section p {

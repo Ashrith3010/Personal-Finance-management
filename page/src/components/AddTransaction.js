@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_TRANSACTION, GET_TRANSACTIONS_BY_DATE } from '../graphql';
 import { Link, useNavigate } from 'react-router-dom';
+import { FaHome, FaMoneyBillWave, FaPlusCircle } from 'react-icons/fa'; // Import icons
 import DatePicker from './DatePicker';
-import './styles/AddTransaction.css';
+import './styles/AddTransaction.css'; // Import CSS
 
 const AddTransaction = () => {
   const [description, setDescription] = useState('');
@@ -15,21 +16,32 @@ const AddTransaction = () => {
   const navigate = useNavigate();
 
   const [addTransaction] = useMutation(ADD_TRANSACTION, {
-    refetchQueries: [
-      {
+    update(cache, { data: { addTransaction } }) {
+      const { transactionsByDate } = cache.readQuery({
         query: GET_TRANSACTIONS_BY_DATE,
         variables: {
           userId,
-          startDate: selectedDate.toISOString().split('T')[0],
+          startDate: new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1).toISOString().split('T')[0],
           endDate: new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).toISOString().split('T')[0]
         }
-      }
-    ]
+      });
+      cache.writeQuery({
+        query: GET_TRANSACTIONS_BY_DATE,
+        variables: {
+          userId,
+          startDate: new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1).toISOString().split('T')[0],
+          endDate: new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).toISOString().split('T')[0]
+        },
+        data: {
+          transactionsByDate: [...transactionsByDate, addTransaction]
+        }
+      });
+    }
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const userConfirmed = window.confirm('Are you sure you want to add this transaction?');
 
     if (userConfirmed) {
@@ -46,7 +58,7 @@ const AddTransaction = () => {
         setMessage('Transaction added successfully.');
         setTimeout(() => {
           navigate(type === 'income' ? '/income' : '/expenses');
-        }, 2000); // Navigate after 2 seconds to allow user to see the message
+        }, 2000); 
       } catch (error) {
         console.error('Error saving transaction:', error);
         setMessage('Error saving transaction.');
@@ -57,14 +69,15 @@ const AddTransaction = () => {
   };
 
   return (
-    <div>
-      <nav>
-        <Link to="/dashboard">Dashboard</Link>
-        <Link to="/income">Income</Link>
-        <Link to="/expenses">Expenses</Link>
+    <div className="add-transaction-container">
+      <nav className="add-transaction-nav">
+        <Link to="/dashboard" className="nav-link"><FaHome /> Dashboard</Link>
+        <Link to="/income" className="nav-link"><FaMoneyBillWave /> Income</Link>
+        <Link to="/expenses" className="nav-link"><FaMoneyBillWave /> Expenses</Link>
+        <Link to="/add-transaction" className="nav-link active"><FaPlusCircle /> Add Transaction</Link>
       </nav>
       <h2>Add Transaction</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="add-transaction-form">
         <input
           type="text"
           value={description}

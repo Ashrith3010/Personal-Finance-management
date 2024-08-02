@@ -26,6 +26,7 @@ const typeDefs = gql`
     expenses(userId: ID!): [Transaction]
     transaction(id: ID!): Transaction
     transactionsByDate(userId: ID!, startDate: String!, endDate: String!): [Transaction]
+    user(id: ID!): User  # Add this query
   }
 
   type Mutation {

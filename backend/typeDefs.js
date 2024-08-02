@@ -8,7 +8,7 @@ const typeDefs = gql`
     password: String!
   }
 
- type Transaction {
+  type Transaction {
     id: ID!
     description: String!
     amount: Float!
@@ -26,12 +26,11 @@ const typeDefs = gql`
     expenses(userId: ID!): [Transaction]
     transaction(id: ID!): Transaction
     transactionsByDate(userId: ID!, startDate: String!, endDate: String!): [Transaction]
-
   }
 
   type Mutation {
     register(username: String!, email: String!, password: String!): User
-    login(email: String!, password: String!): AuthPayload
+    login(identifier: String!, password: String!): AuthPayload
     refreshToken(refreshToken: String!): AuthPayload
     addTransaction(userId: ID!, description: String!, amount: Float!, type: String!, date: String): Transaction
     editTransaction(userId: ID!, id: ID!, description: String!, amount: Float!, type: String!, date: String): Transaction

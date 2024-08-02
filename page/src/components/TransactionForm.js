@@ -1,14 +1,21 @@
 import React from 'react';
 
 function TransactionForm({ onSubmit, transactionData, setTransactionData }) {
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setTransactionData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit({
+      ...transactionData,
+      amount: parseFloat(transactionData.amount),
+      date: transactionData.date || new Date().toISOString().split('T')[0]
+    });
   };
 
+  const handleChange = (e) => {
+    setTransactionData({
+      ...transactionData,
+      [e.target.name]: e.target.value
+    });
+  };
   return (
     <form onSubmit={onSubmit}>
       <div>
@@ -30,6 +37,12 @@ function TransactionForm({ onSubmit, transactionData, setTransactionData }) {
             <option value="income">Income</option>
             <option value="expense">Expense</option>
           </select>
+        </label>
+      </div>
+      <div>
+        <label>
+          Date:
+          <input type="date" name="date" value={transactionData.date} onChange={handleChange} required />
         </label>
       </div>
       <button type="submit">Submit</button>

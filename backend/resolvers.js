@@ -40,15 +40,33 @@ const resolvers = {
     },
     incomes: (_, __, { userId }) => {
       if (!userId) throw new Error('Unauthorized');
-      return db.transactions.filter(transaction => transaction.type === 'income' && transaction.userId === userId);
+      return db.transactions
+        .filter(transaction => transaction.type === 'income' && transaction.userId === userId)
+        .map(transaction => ({
+          ...transaction,
+          date: transaction.date || new Date().toISOString().split('T')[0] // Provide a default date if missing
+        }));
     },
     expenses: (_, __, { userId }) => {
       if (!userId) throw new Error('Unauthorized');
-      return db.transactions.filter(transaction => transaction.type === 'expense' && transaction.userId === userId);
+      return db.transactions
+        .filter(transaction => transaction.type === 'expense' && transaction.userId === userId)
+        .map(transaction => ({
+          ...transaction,
+          date: transaction.date || new Date().toISOString().split('T')[0] // Provide a default date if missing
+        }));
     },
     transaction: (_, { id }, { userId }) => {
       if (!userId) throw new Error('Unauthorized');
       return db.transactions.find(transaction => transaction.id === id && transaction.userId === userId);
+    },
+    transactionsByDate: (_, { userId, startDate, endDate }) => {
+      if (!userId) throw new Error('Unauthorized');
+      return db.transactions.filter(transaction => 
+        transaction.userId === userId &&
+        transaction.date >= startDate &&
+        transaction.date <= endDate
+      );
     },
   },
   Mutation: {
@@ -78,20 +96,28 @@ const resolvers = {
         throw new Error('Invalid refresh token');
       }
     },
-    addTransaction: (_, { description, amount, type, userId }) => {
+    addTransaction: (_, { userId, description, amount, type, date }) => {
       if (!userId) throw new Error('Unauthorized');
-      const newTransaction = { id: Date.now().toString(), description, amount, type, userId };
+      const newTransaction = { 
+        id: Date.now().toString(), 
+        description, 
+        amount: parseFloat(amount), 
+        type, 
+        userId, 
+        date: date || new Date().toISOString().split('T')[0]
+      };
       db.transactions.push(newTransaction);
       fs.writeFileSync(dbPath, JSON.stringify(db, null, 2));
       return newTransaction;
     },
-    editTransaction: (_, { id, description, amount, type, userId }) => {
+    editTransaction: (_, { userId, id, description, amount, type, date }) => {
       if (!userId) throw new Error('Unauthorized');
-      const transaction = db.transactions.find(transaction => transaction.id === id && transaction.userId === userId);
+      const transaction = db.transactions.find(t => t.id === id && t.userId === userId);
       if (!transaction) throw new Error('Transaction not found');
       transaction.description = description;
-      transaction.amount = amount;
+      transaction.amount = parseFloat(amount);
       transaction.type = type;
+      transaction.date = date || transaction.date || new Date().toISOString().split('T')[0];
       fs.writeFileSync(dbPath, JSON.stringify(db, null, 2));
       return transaction;
     },

@@ -5,15 +5,16 @@ const typeDefs = gql`
     id: ID!
     username: String!
     email: String!
-    password: String!  # Consider excluding this field from the schema for security reasons
+    password: String!
   }
 
-  type Transaction {
+ type Transaction {
     id: ID!
     description: String!
     amount: Float!
     type: String!
     userId: ID!
+    date: String
   }
 
   type Query {
@@ -24,14 +25,16 @@ const typeDefs = gql`
     incomes(userId: ID!): [Transaction]
     expenses(userId: ID!): [Transaction]
     transaction(id: ID!): Transaction
+    transactionsByDate(userId: ID!, startDate: String!, endDate: String!): [Transaction]
+
   }
 
   type Mutation {
     register(username: String!, email: String!, password: String!): User
     login(email: String!, password: String!): AuthPayload
     refreshToken(refreshToken: String!): AuthPayload
-    addTransaction(userId: ID!, description: String!, amount: Float!, type: String!): Transaction
-    editTransaction(userId: ID!, id: ID!, description: String!, amount: Float!, type: String!): Transaction
+    addTransaction(userId: ID!, description: String!, amount: Float!, type: String!, date: String): Transaction
+    editTransaction(userId: ID!, id: ID!, description: String!, amount: Float!, type: String!, date: String): Transaction
     deleteTransaction(userId: ID!, id: ID!): Boolean
   }
 

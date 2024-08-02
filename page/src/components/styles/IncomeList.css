@@ -1,0 +1,65 @@
+.income-list-container {
+    padding: 20px;
+  }
+  
+  .income-nav {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .nav-link.active {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .income-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .income-table th, .income-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .income-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .income-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .income-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .filters {
+    margin-bottom: 20px;
+  }
+  
+  .month-year-filters {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .month-year-filters select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .total-income {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: 20px;
+  }
+  

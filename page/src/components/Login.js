@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import client from '../apolloClient';
- 
+import './styles/Login.css';  // Import the Login CSS
 
 const LOGIN_USER = gql`
-  mutation Login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+  mutation Login($identifier: String!, $password: String!) {
+    login(identifier: $identifier, password: $password) {
       accessToken
       refreshToken
       username
@@ -16,7 +16,7 @@ const LOGIN_USER = gql`
 `;
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [loginUser, { loading, error }] = useMutation(LOGIN_USER);
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await loginUser({ variables: { email, password } });
+      const { data } = await loginUser({ variables: { identifier, password } });
       if (data && data.login) {
         localStorage.setItem('token', data.login.accessToken);
         localStorage.setItem('refreshToken', data.login.refreshToken);
@@ -44,12 +44,12 @@ const Login = () => {
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="identifier">Username or Email:</label>
           <input 
-            id="email"
-            type="email" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
+            id="identifier"
+            type="text" 
+            value={identifier} 
+            onChange={(e) => setIdentifier(e.target.value)} 
             required 
             className="form-control"
           />

@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_TRANSACTION, GET_TRANSACTIONS_BY_DATE } from '../graphql';
 import { Link, useNavigate } from 'react-router-dom';
-import DatePicker from './DatePicker'; // Assuming we've created this component
+import DatePicker from './DatePicker';
+import './styles/AddTransaction.css';
 
 const AddTransaction = () => {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
   const [type, setType] = useState('income');
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [message, setMessage] = useState('');
   const userId = localStorage.getItem('userId');
   const navigate = useNavigate();
 
@@ -27,19 +29,30 @@ const AddTransaction = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const transactionData = {
-      description,
-      amount: parseFloat(amount),
-      type,
-      date: selectedDate.toISOString().split('T')[0],
-      userId,
-    };
+    
+    const userConfirmed = window.confirm('Are you sure you want to add this transaction?');
 
-    try {
-      await addTransaction({ variables: transactionData });
-      navigate(type === 'income' ? '/income' : '/expenses');
-    } catch (error) {
-      console.error('Error saving transaction:', error);
+    if (userConfirmed) {
+      const transactionData = {
+        description,
+        amount: parseFloat(amount),
+        type,
+        date: selectedDate.toISOString().split('T')[0],
+        userId,
+      };
+
+      try {
+        await addTransaction({ variables: transactionData });
+        setMessage('Transaction added successfully.');
+        setTimeout(() => {
+          navigate(type === 'income' ? '/income' : '/expenses');
+        }, 2000); // Navigate after 2 seconds to allow user to see the message
+      } catch (error) {
+        console.error('Error saving transaction:', error);
+        setMessage('Error saving transaction.');
+      }
+    } else {
+      setMessage('Transaction canceled.');
     }
   };
 
@@ -49,7 +62,6 @@ const AddTransaction = () => {
         <Link to="/dashboard">Dashboard</Link>
         <Link to="/income">Income</Link>
         <Link to="/expenses">Expenses</Link>
-        <Link to="/savings">Savings</Link>
       </nav>
       <h2>Add Transaction</h2>
       <form onSubmit={handleSubmit}>
@@ -74,6 +86,11 @@ const AddTransaction = () => {
         <DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
         <button type="submit">Add Transaction</button>
       </form>
+      {message && (
+        <p className={`message ${message.includes('successfully') ? 'success' : 'error'}`}>
+          {message}
+        </p>
+      )}
     </div>
   );
 };

@@ -1,24 +1,66 @@
-.dashboard {
-    padding: 2rem;
-  }
-  
-  .dashboard h1 {
-    font-size: 2rem;
-  }
-  
-  .dashboard h2 {
-    font-size: 1.5rem;
-  }
-  
-  .dashboard ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .dashboard li {
-    background: #f4f4f4;
-    margin: 0.5rem 0;
-    padding: 1rem;
-    border-radius: 5px;
-  }
-  
+/* Ensure full-screen container */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+  width: 100vw;  /* Full viewport width */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header styling */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Logout button styling */
+.logout-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Navigation styling */
+.dashboard-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link.active {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
+
+.nav-icon {
+  margin-right: 8px;
+}
+
+/* Content area styling */
+.dashboard-content {
+  flex: 1; /* Takes up remaining space */
+  padding: 20px;
+  overflow-y: auto; /* Allows scrolling if content overflows */
+  background-color: #f9f9f9;
+  display: flex; /* Adjust as needed */
+  flex-direction: column; /* Ensures savings and other content stack vertically */
+}

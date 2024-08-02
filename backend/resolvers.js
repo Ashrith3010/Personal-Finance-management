@@ -77,8 +77,12 @@ const resolvers = {
       fs.writeFileSync(dbPath, JSON.stringify(db, null, 2));
       return newUser;
     },
-    login: async (_, { email, password }) => {
-      const user = db.users.find(user => user.email === email);
+    login: async (_, { identifier, password }) => {
+      // Check if the identifier is an email or username
+      const user = validateEmail(identifier) 
+        ? db.users.find(user => user.email === identifier) 
+        : db.users.find(user => user.username === identifier);
+
       if (!user) throw new Error('User not found');
       const valid = await bcrypt.compare(password, user.password);
       if (!valid) throw new Error('Invalid password');
@@ -131,5 +135,11 @@ const resolvers = {
     },
   },
 };
+
+// Utility function to validate email
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
 
 module.exports = resolvers;

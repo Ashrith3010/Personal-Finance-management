@@ -1,0 +1,48 @@
+.header {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.header a:hover {
+  background-color: #555;
+}
+
+.header button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.header button:hover {
+  background-color: #45a049;
+}
+
+.header-title {
+  text-align: center;
+}
+
+.header-title h1 {
+  margin: 0;
+}

@@ -23,7 +23,17 @@ export const GET_DASHBOARD_DATA = gql`
     }
   }
 `;
-  
+export const GET_TRANSACTION_BY_ID = gql`
+query GetTransactionById($id: ID!) {
+  transaction(id: $id) {
+    id
+    description
+    amount
+    type
+    date
+  }
+}
+`; 
 
 // Query to get all transactions (general)
 export const GET_TRANSACTIONS = gql`
@@ -37,7 +47,6 @@ export const GET_TRANSACTIONS = gql`
     }
   }
 `;
-
 // Query to get transactions by date range
 export const GET_TRANSACTIONS_BY_DATE = gql`
   query GetTransactionsByDate($userId: ID!, $startDate: String!, $endDate: String!) {

@@ -1,32 +1,43 @@
+.savings {
+  padding: 20px;
+  width: 100%;
+}
+
 .savings-container {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.savings-section {
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.savings-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.savings-controls select,
+.savings-controls input {
+  width: 48%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.savings p {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
   .savings-section {
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 45%;
-    background-color: #f9f9f9;
-    border-radius: 8px;
+    width: 48%;
   }
-  
-  .savings-section h3 {
-    margin-top: 0;
-  }
-  
-  .savings-section label {
-    display: block;
-    margin: 10px 0;
-  }
-  
-  .savings-section select,
-  .savings-section input {
-    margin-left: 10px;
-  }
-  
-  .savings-section p {
-    margin: 10px 0;
-  }
-  
+}

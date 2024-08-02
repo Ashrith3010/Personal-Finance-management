@@ -17,6 +17,9 @@ const createTokens = (user) => {
 
 const resolvers = {
   Query: {
+    user: (_, { id }) => {
+      return db.users.find(user => user.id === id);
+    },
     hello: () => 'Hello, world!',
     totalBalance: (_, __, { userId }) => {
       if (!userId) throw new Error('Unauthorized');
@@ -100,7 +103,7 @@ const resolvers = {
         throw new Error('Invalid refresh token');
       }
     },
-    addTransaction: (_, { userId, description, amount, type, date }) => {
+    addTransaction: (_, { userId, description, amount, type, date = new Date().toISOString().split('T')[0] }) => {
       if (!userId) throw new Error('Unauthorized');
       const newTransaction = { 
         id: Date.now().toString(), 
@@ -114,7 +117,7 @@ const resolvers = {
       fs.writeFileSync(dbPath, JSON.stringify(db, null, 2));
       return newTransaction;
     },
-    editTransaction: (_, { userId, id, description, amount, type, date }) => {
+    editTransaction: (_, { userId, id, description, amount, type, date = new Date().toISOString().split('T')[0] }) => {
       if (!userId) throw new Error('Unauthorized');
       const transaction = db.transactions.find(t => t.id === id && t.userId === userId);
       if (!transaction) throw new Error('Transaction not found');

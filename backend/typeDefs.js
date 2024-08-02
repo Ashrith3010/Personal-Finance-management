@@ -18,6 +18,7 @@ const typeDefs = gql`
   }
 
   type Query {
+    user(id: ID!): User
     hello: String
     totalBalance(userId: ID!): Float
     totalIncome(userId: ID!): Float
@@ -26,7 +27,6 @@ const typeDefs = gql`
     expenses(userId: ID!): [Transaction]
     transaction(id: ID!): Transaction
     transactionsByDate(userId: ID!, startDate: String!, endDate: String!): [Transaction]
-    user(id: ID!): User  # Add this query
   }
 
   type Mutation {

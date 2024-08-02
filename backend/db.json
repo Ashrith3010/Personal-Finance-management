@@ -17,6 +17,12 @@
       "username": "Likki",
       "email": "likki@gmail.com",
       "password": "$2a$10$0aTxXSiEaUU.5zfz3JC87eactreWec2E.VO38oX/iyY/5rTpQJ7Vi"
+    },
+    {
+      "id": "1722601763295",
+      "username": "Chandu",
+      "email": "chandu1969@gmail.com",
+      "password": "$2b$10$2dTVm3U0AZ/sXEG6ncFZRu0EAPMRL4WG95fJWvwMAeAw8Qhb78jKO"
     }
   ],
   "transactions": [
@@ -30,8 +36,8 @@
     },
     {
       "id": "1722358054871",
-      "description": "Monthly salary",
-      "amount": 1500,
+      "description": "Monthly salaryyy",
+      "amount": 150,
       "type": "income",
       "userId": "1722355435618",
       "date": "2024-08-01"
@@ -39,10 +45,10 @@
     {
       "id": "1722399359336",
       "description": "rent",
-      "amount": 309,
-      "type": "income",
+      "amount": 310,
+      "type": "expense",
       "userId": "1722355435618",
-      "date": "2024-08-01"
+      "date": "2024-08-22"
     },
     {
       "id": "1722509926302",
@@ -78,11 +84,11 @@
     },
     {
       "id": "1722589824069",
-      "description": "foood",
-      "amount": 456,
-      "type": "expense",
+      "description": "food",
+      "amount": 789,
+      "type": "income",
       "userId": "1722355435618",
-      "date": "2024-08-10"
+      "date": "2024-08-02"
     },
     {
       "id": "1722596674721",
@@ -91,6 +97,30 @@
       "type": "expense",
       "userId": "1722355435618",
       "date": "2024-08-16"
+    },
+    {
+      "id": "1722611742467",
+      "description": "nana",
+      "amount": 8090,
+      "type": "income",
+      "userId": "1722355435618",
+      "date": "2024-08-09"
+    },
+    {
+      "id": "1722615365448",
+      "description": "LIkitha",
+      "amount": 2200,
+      "type": "income",
+      "userId": "1722355435618",
+      "date": "2024-08-24"
+    },
+    {
+      "id": "1722618128779",
+      "description": "laptop",
+      "amount": 78000,
+      "type": "expense",
+      "userId": "1722355435618",
+      "date": "2024-08-24"
     }
   ]
 }

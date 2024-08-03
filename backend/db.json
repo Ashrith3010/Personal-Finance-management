@@ -169,6 +169,14 @@
       "type": "expense",
       "userId": "1722355435618",
       "date": "2024-08-08"
+    },
+    {
+      "id": "1722665629571",
+      "description": "A2B",
+      "amount": 776,
+      "type": "expense",
+      "userId": "1722355435618",
+      "date": "2024-08-14"
     }
   ]
 }

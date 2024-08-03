@@ -17,8 +17,7 @@
   flex-direction: column;
 }
 
-.add-transaction-form input,
-.add-transaction-form select {
+.add-transaction-form input, .add-transaction-form select {
   margin-bottom: 15px;
   padding: 10px;
   border: 1px solid #ddd;
@@ -48,12 +47,7 @@
 .error {
   background-color: #f2dede;
   color: #a94442;
-}
-/* EditTransaction.css */
-
-/* EditTransaction.css */
-
-.edit-transaction {
+}.edit-transaction {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -72,8 +66,7 @@
   flex-direction: column;
 }
 
-.edit-transaction-form input,
-.edit-transaction-form select {
+.edit-transaction-form input, .edit-transaction-form select {
   margin-bottom: 15px;
   padding: 10px;
   border: 1px solid #ddd;
@@ -92,22 +85,6 @@
 
 .edit-transaction-form button:hover {
   background-color: #45a049;
-}
-
-.message {
-  margin-top: 15px;
-  padding: 10px;
-  border-radius: 4px;
-}
-
-.message.success {
-  background-color: #dff0d8;
-  color: #3c763d;
-}
-
-.message.error {
-  background-color: #f2dede;
-  color: #a94442;
 }
 
 .back-link {

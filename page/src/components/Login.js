@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import client from '../apolloClient';
-import './styles/LoginRegister.css';  // Import the Login CSS
+import './styles/LoginRegister.css';
 
 const LOGIN_USER = gql`
   mutation Login($identifier: String!, $password: String!) {
@@ -35,48 +35,63 @@ const Login = () => {
       }
     } catch (err) {
       console.error('Login failed:', err.message);
-      alert(`Login failed: ${err.message}`);
     }
   };
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="identifier">Username or Email:</label>
-          <input 
-            id="identifier"
-            type="text" 
-            value={identifier} 
-            onChange={(e) => setIdentifier(e.target.value)} 
-            required 
-            className="form-control"
-          />
+      <div className="login-card">
+        <div className="login-image">
+          <img src="C:/Users/I7738/Desktop/Git/final/abc.png" alt="Login Illustration" />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input 
-            id="password"
-            type="password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-            required 
-            className="form-control"
-          />
+        <div className="login-form">
+          <h2>Welcome back!</h2>
+          <p>Please enter your details</p>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="identifier">Email or Username</label>
+              <input
+                id="identifier"
+                type="text"
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
+                required
+                className="form-control"
+                placeholder="example@gmail.com"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="form-control"
+              />
+            </div>
+            <div className="form-group">
+              <label className="checkbox-container">
+                <input type="checkbox" />
+                <span className="checkmark"></span>
+                Remember for 30 days
+              </label>
+            </div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="submit-button"
+            >
+              {loading ? 'Logging in...' : 'Log in'}
+            </button>
+            {error && <p className="error-message">Error: {error.message}</p>}
+          </form>
+          <p className="register-link">
+            Don't have an account? <a href="/register">Sign Up</a>
+          </p>
         </div>
-        <button 
-          type="submit" 
-          disabled={loading} 
-          className="submit-button"
-        >
-          {loading ? 'Logging in...' : 'Login'}
-        </button>
-        {error && <p className="error-message">Error: {error.message}</p>}
-      </form>
-      <p className="register-link">
-        Don't have an account? <a href="/register">Register here</a>
-      </p>
+      </div>
     </div>
   );
 };

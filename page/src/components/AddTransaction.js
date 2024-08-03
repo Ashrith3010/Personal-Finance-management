@@ -18,20 +18,35 @@ const AddTransaction = () => {
   const navigate = useNavigate();
 
   const [addTransaction] = useMutation(ADD_TRANSACTION, {
-    refetchQueries: [
-      {
+    update: (cache, { data: { addTransaction } }) => {
+      const today = new Date();
+      const cachedData = cache.readQuery({
         query: GET_TRANSACTIONS_BY_DATE,
         variables: {
           userId,
           startDate: formatDate(new Date(0)),
-          endDate: formatDate(new Date())
+          endDate: formatDate(today)
         }
+      });
+
+      if (cachedData && cachedData.transactionsByDate) {
+        cache.writeQuery({
+          query: GET_TRANSACTIONS_BY_DATE,
+          variables: {
+            userId,
+            startDate: formatDate(new Date(0)),
+            endDate: formatDate(today)
+          },
+          data: {
+            transactionsByDate: [...cachedData.transactionsByDate, addTransaction]
+          }
+        });
       }
-    ],
+    },
     onCompleted: (data) => {
       setMessage('Transaction added successfully.');
       setTimeout(() => {
-        navigate(type === 'income' ? '/income' : '/expenses');
+        navigate(type === 'income' ? '/income' : '/expenses', { state: { refetch: true } });
       }, 2000);
     },
     onError: (error) => {
@@ -51,11 +66,11 @@ const AddTransaction = () => {
 
     if (userConfirmed) {
       const transactionData = {
+        userId,
         description,
         amount: parseFloat(amount),
         type,
         date: formatDate(selectedDate),
-        userId,
       };
 
       try {

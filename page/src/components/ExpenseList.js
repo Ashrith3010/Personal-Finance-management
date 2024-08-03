@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { GET_TRANSACTIONS_BY_DATE, DELETE_TRANSACTION } from '../graphql';
 import Header from './Header';
 import './styles/IncomeExpense.css';
@@ -9,24 +9,41 @@ function ExpenseList() {
   const [month, setMonth] = useState(new Date().getMonth() + 1);
   const [year, setYear] = useState(new Date().getFullYear());
   const navigate = useNavigate();
+  const location = useLocation();
   const userId = localStorage.getItem('userId');
 
-  const { loading, error, data } = useQuery(GET_TRANSACTIONS_BY_DATE, {
+  const { loading, error, data, refetch } = useQuery(GET_TRANSACTIONS_BY_DATE, {
     variables: {
       userId,
       startDate: new Date(year, month - 1, 1).toISOString().split('T')[0],
       endDate: new Date(year, month, 0).toISOString().split('T')[0]
     },
+    fetchPolicy: 'cache-and-network',
   });
 
+  useEffect(() => {
+    if (location.state?.refetch) {
+      refetch();
+    }
+  }, [location.state, refetch]);
+
   const [deleteTransaction] = useMutation(DELETE_TRANSACTION, {
-    refetchQueries: [{ query: GET_TRANSACTIONS_BY_DATE, variables: { userId, startDate: new Date(year, month - 1, 1).toISOString().split('T')[0], endDate: new Date(year, month, 0).toISOString().split('T')[0] } }],
+    refetchQueries: [{ 
+      query: GET_TRANSACTIONS_BY_DATE, 
+      variables: { 
+        userId, 
+        startDate: new Date(year, month - 1, 1).toISOString().split('T')[0], 
+        endDate: new Date(year, month, 0).toISOString().split('T')[0] 
+      } 
+    }],
   });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const expenses = data?.transactionsByDate.filter(t => t.type === 'expense') || [];
+  const expenses = data?.transactionsByDate 
+    ? data.transactionsByDate.filter(t => t.type === 'expense') 
+    : [];
 
   const handleEdit = (transaction) => {
     navigate(`/edit-transaction/${transaction.id}`, { state: { transaction } });
@@ -60,29 +77,33 @@ function ExpenseList() {
           ))}
         </select>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Description</th>
-            <th>Amount</th>
-            <th>Date</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {expenses.map((expense) => (
-            <tr key={expense.id}>
-              <td>{expense.description}</td>
-              <td>${expense.amount}</td>
-              <td>{new Date(expense.date).toLocaleDateString()}</td>
-              <td>
-                <button onClick={() => handleEdit(expense)}>Edit</button>
-                <button onClick={() => onDeleteTransaction(expense.id)}>Delete</button>
-              </td>
+      {expenses.length === 0 ? (
+        <p>No expense transactions found for this period.</p>
+      ) : (
+        <table>
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {expenses.map((expense) => (
+              <tr key={expense.id}>
+                <td>{expense.description}</td>
+                <td>${expense.amount}</td>
+                <td>{new Date(expense.date).toLocaleDateString()}</td>
+                <td>
+                  <button onClick={() => handleEdit(expense)}>Edit</button>
+                  <button onClick={() => onDeleteTransaction(expense.id)}>Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
       <div className="total">
         <h4>Total Expenses: ${totalExpenses}</h4>
       </div>

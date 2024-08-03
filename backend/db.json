@@ -38,7 +38,7 @@
       "id": "1722358054871",
       "description": "Monthly salaryyy",
       "amount": 150,
-      "type": "income",
+      "type": "expense",
       "userId": "1722355435618",
       "date": "2024-08-01"
     },
@@ -121,6 +121,54 @@
       "type": "expense",
       "userId": "1722355435618",
       "date": "2024-08-24"
+    },
+    {
+      "id": "1722662632898",
+      "description": "Mom",
+      "amount": 20000,
+      "type": "income",
+      "userId": "1722355435618",
+      "date": "2024-08-16"
+    },
+    {
+      "id": "1722662739694",
+      "description": "Adarsh",
+      "amount": 999,
+      "type": "expense",
+      "userId": "1722355435618",
+      "date": "2024-08-23"
+    },
+    {
+      "id": "1722662770647",
+      "description": "Adarsh 2",
+      "amount": 789,
+      "type": "expense",
+      "userId": "1722355435618",
+      "date": "2024-08-17"
+    },
+    {
+      "id": "1722662810646",
+      "description": "kl",
+      "amount": 78656,
+      "type": "income",
+      "userId": "1722355435618",
+      "date": "2024-08-13"
+    },
+    {
+      "id": "1722663542875",
+      "description": "home",
+      "amount": 5600,
+      "type": "income",
+      "userId": "1722355435618",
+      "date": "2024-08-03"
+    },
+    {
+      "id": "1722663568346",
+      "description": "Current Bill",
+      "amount": 3600,
+      "type": "expense",
+      "userId": "1722355435618",
+      "date": "2024-08-08"
     }
   ]
 }

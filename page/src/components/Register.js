@@ -3,7 +3,7 @@ import { gql, useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import './styles/LoginRegister.css';
 
-const REGISTER_USER = gql`
+export const REGISTER_USER = gql`
   mutation Register($username: String!, $email: String!, $password: String!) {
     register(username: $username, email: $email, password: $password) {
       id
@@ -31,7 +31,7 @@ const Register = () => {
   };
 
   return (
-    <div className="login-container">
+    <div className="login-container" id="register-page">
       <div className="login-card">
         <div className="login-image">
         </div>

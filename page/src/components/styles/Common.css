@@ -1,0 +1,8 @@
+container {
+margin-left: 220px; /* Adjust according to header width and padding */
+padding: 20px;
+background-color: black;
+border-radius: 8px;
+box-sizing: border-box;
+align-content: center;  
+}

@@ -19,7 +19,7 @@ const Dashboard = () => {
   const username = data?.user?.username || 'User';
 
   return (
-    <div className="dashboard">
+    <div className="dashboard" id="main-dashboard">
       <Header title="Dashboard" />
       <div className="dashboard-content">
         <h1 className="welcome-message">Welcome, {username}</h1>

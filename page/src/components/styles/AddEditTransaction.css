@@ -1,36 +1,54 @@
-.add-transaction {
+.edit-transaction-container {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  height: calc(100vh - 60px); /* Adjust based on the height of your header */
   width: 100%;
 }
 
-.add-transaction-content {
-  flex-grow: 1;
+.edit-transaction-content {
+  flex: 1;
   padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
+  box-sizing: border-box;
+  background-color: #dbdad7;
+  margin-left: 200px; /* Adjust width based on the header width */
 }
 
-.add-transaction-form {
+.edit-transaction-form {
   display: flex;
   flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
-.add-transaction-form input, .add-transaction-form select {
+.edit-transaction-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.edit-transaction-form input,
+.edit-transaction-form select {
   margin-bottom: 15px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.add-transaction-form button {
+.edit-transaction-form button {
   padding: 10px;
-  background-color: #4CAF50;
+  background-color: #716d6d;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.edit-transaction-form button:hover {
+  background-color: #45a049;
 }
 
 .message {
@@ -47,53 +65,96 @@
 .error {
   background-color: #f2dede;
   color: #a94442;
-}.edit-transaction {
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: black;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  font-weight: bold;
+  color: blue;
+}
+.add-edit-transaction-container {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  height: calc(100vh - 60px); /* Adjust based on the height of your header */
   width: 100%;
 }
 
-.edit-transaction-content {
-  flex-grow: 1;
+.add-transaction-content {
+  flex: 1;
   padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
+  box-sizing: border-box;
+  background-color: #dbdad7;
+  margin-left: 200px; /* Adjust width based on the header width */
 }
 
-.edit-transaction-form {
+.add-transaction-form {
   display: flex;
   flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
-.edit-transaction-form input, .edit-transaction-form select {
+.add-transaction-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add-transaction-form input,
+.add-transaction-form select {
   margin-bottom: 15px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.edit-transaction-form button {
+.add-transaction-form button {
   padding: 10px;
-  background-color: #4CAF50;
+  background-color: #716d6d;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.edit-transaction-form button:hover {
+.add-transaction-form button:hover {
   background-color: #45a049;
+}
+
+.message {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.success {
+  background-color: #dff0d8;
+  color: #3c763d;
+}
+
+.error {
+  background-color: #f2dede;
+  color: #a94442;
 }
 
 .back-link {
   display: inline-block;
   margin-top: 20px;
-  color: #007bff;
+  color: black;
   text-decoration: none;
 }
 
 .back-link:hover {
-  text-decoration: underline;
+  font-weight: bold;
+  color: blue;
 }

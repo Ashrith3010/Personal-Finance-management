@@ -28,21 +28,21 @@ function IncomeList() {
   }, [location.state, refetch]);
 
   const [deleteTransaction] = useMutation(DELETE_TRANSACTION, {
-    refetchQueries: [{ 
-      query: GET_TRANSACTIONS_BY_DATE, 
-      variables: { 
-        userId, 
-        startDate: new Date(year, month - 1, 1).toISOString().split('T')[0], 
-        endDate: new Date(year, month, 0).toISOString().split('T')[0] 
-      } 
+    refetchQueries: [{
+      query: GET_TRANSACTIONS_BY_DATE,
+      variables: {
+        userId,
+        startDate: new Date(year, month - 1, 1).toISOString().split('T')[0],
+        endDate: new Date(year, month, 0).toISOString().split('T')[0]
+      }
     }],
   });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const incomes = data?.transactionsByDate 
-    ? data.transactionsByDate.filter(t => t.type === 'income') 
+  const incomes = data?.transactionsByDate
+    ? data.transactionsByDate.filter(t => t.type === 'income')
     : [];
 
   const handleEdit = (transaction) => {
@@ -63,49 +63,52 @@ function IncomeList() {
   const totalIncome = incomes.reduce((sum, income) => sum + parseFloat(income.amount), 0).toFixed(2);
 
   return (
-    <div className="income-list">
+    <div id="income-list" className="income-expense">
       <Header title="Income" />
-      <div className="filters">
-        <select value={month} onChange={(e) => setMonth(Number(e.target.value))}>
-          {[...Array(12)].map((_, i) => (
-            <option key={i} value={i + 1}>{new Date(0, i).toLocaleString('default', { month: 'long' })}</option>
-          ))}
-        </select>
-        <select value={year} onChange={(e) => setYear(Number(e.target.value))}>
-          {Array.from({ length: 10 }, (_, i) => new Date().getFullYear() - 5 + i).map(y => (
-            <option key={y} value={y}>{y}</option>
-          ))}
-        </select>
-      </div>
-      {incomes.length === 0 ? (
-        <p>No income transactions found for this period.</p>
-      ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>Description</th>
-              <th>Amount</th>
-              <th>Date</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {incomes.map((income) => (
-              <tr key={income.id}>
-                <td>{income.description}</td>
-                <td>${income.amount}</td>
-                <td>{new Date(income.date).toLocaleDateString()}</td>
-                <td>
-                  <button onClick={() => handleEdit(income)}>Edit</button>
-                  <button onClick={() => onDeleteTransaction(income.id)}>Delete</button>
-                </td>
-              </tr>
+      <div className="income-expense-content">
+        <h2 className="income-expense-Header">Income</h2>
+        <div className="filters">
+          <select id="month-select" value={month} onChange={(e) => setMonth(Number(e.target.value))}>
+            {[...Array(12)].map((_, i) => (
+              <option key={i} value={i + 1}>{new Date(0, i).toLocaleString('default', { month: 'long' })}</option>
             ))}
-          </tbody>
-        </table>
-      )}
-      <div className="total">
-        <h4>Total Income: ${totalIncome}</h4>
+          </select>
+          <select id="year-select" value={year} onChange={(e) => setYear(Number(e.target.value))}>
+            {Array.from({ length: 10 }, (_, i) => new Date().getFullYear() - 5 + i).map(y => (
+              <option key={y} value={y}>{y}</option>
+            ))}
+          </select>
+        </div>
+        {incomes.length === 0 ? (
+          <p>No income transactions found for this period.</p>
+        ) : (
+          <table id="income-table">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {incomes.map((income) => (
+                <tr key={income.id}>
+                  <td>{income.description}</td>
+                  <td>Rs: {income.amount}</td>
+                  <td>{new Date(income.date).toLocaleDateString()}</td>
+                  <td>
+                    <button onClick={() => handleEdit(income)}>Edit</button>
+                    <button onClick={() => onDeleteTransaction(income.id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        <div className="total">
+          <h4 id="total-income">Total Income: Rs: {totalIncome}</h4>
+        </div>
       </div>
     </div>
   );

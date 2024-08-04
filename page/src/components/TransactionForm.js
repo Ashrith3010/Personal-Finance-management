@@ -16,33 +16,61 @@ function TransactionForm({ onSubmit, transactionData, setTransactionData }) {
       [e.target.name]: e.target.value
     });
   };
+
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit}> {/* Fixed onSubmit handler */}
       <div>
-        <label>
+        <label htmlFor="description">
           Description:
-          <input type="text" name="description" value={transactionData.description} onChange={handleChange} required />
+          <input
+            id="description"
+            type="text"
+            name="description"
+            value={transactionData.description}
+            onChange={handleChange}
+            required
+          />
         </label>
       </div>
       <div>
-        <label>
+        <label htmlFor="amount">
           Amount:
-          <input type="number" name="amount" value={transactionData.amount} onChange={handleChange} required />
+          <input
+            id="amount"
+            type="number"
+            name="amount"
+            value={transactionData.amount}
+            onChange={handleChange}
+            required
+          />
         </label>
       </div>
       <div>
-        <label>
+        <label htmlFor="type">
           Type:
-          <select name="type" value={transactionData.type} onChange={handleChange} required>
+          <select
+            id="type"
+            name="type"
+            value={transactionData.type}
+            onChange={handleChange}
+            required
+          >
             <option value="income">Income</option>
             <option value="expense">Expense</option>
           </select>
         </label>
       </div>
       <div>
-        <label>
+        <label htmlFor="date">
           Date:
-          <input type="date" name="date" value={transactionData.date} onChange={handleChange} required />
+          <input
+            id="date"
+            type="date"
+            name="date"
+            value={transactionData.date}
+            onChange={handleChange}
+            required
+          />
         </label>
       </div>
       <button type="submit">Submit</button>

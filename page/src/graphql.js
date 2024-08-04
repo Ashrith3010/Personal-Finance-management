@@ -23,6 +23,15 @@ export const GET_DASHBOARD_DATA = gql`
     }
   }
 `;
+export const REGISTER_USER = gql`
+mutation Register($username: String!, $email: String!, $password: String!) {
+  register(username: $username, email: $email, password: $password) {
+    id
+    username
+    email
+  }
+}
+`;
 export const GET_TRANSACTION_BY_ID = gql`
 query GetTransactionById($id: ID!) {
   transaction(id: $id) {

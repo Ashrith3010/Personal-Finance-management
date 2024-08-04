@@ -80,11 +80,13 @@ const EditTransaction = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="edit-transaction">
+    <div className="edit-transaction-container" id="edit-transaction-page">
       <Header title="Edit Transaction" />
       <div className="edit-transaction-content">
-        <form onSubmit={handleSubmit} className="edit-transaction-form">
+        <form onSubmit={handleSubmit} className="edit-transaction-form" id="edit-transaction-form">
+          <h2>Edit Transaction</h2>
           <input
+            id="description-input"
             type="text"
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
@@ -92,6 +94,7 @@ const EditTransaction = () => {
             required
           />
           <input
+            id="amount-input"
             type="number"
             value={formData.amount}
             onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
@@ -100,6 +103,7 @@ const EditTransaction = () => {
             step="any"
           />
           <select 
+            id="type-select"
             value={formData.type} 
             onChange={(e) => setFormData({ ...formData, type: e.target.value })}
           >
@@ -107,14 +111,14 @@ const EditTransaction = () => {
             <option value="expense">Expense</option>
           </select>
           <DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
-          <button type="submit">Update Transaction</button>
+          <button type="submit" id="update-transaction-button">Update Transaction</button>
         </form>
         {message && (
-          <p className={`message ${message.includes('successfully') ? 'success' : 'error'}`}>
+          <p id="message" className={`message ${message.includes('successfully') ? 'success' : 'error'}`}>
             {message}
           </p>
         )}
-        <Link to={`/${formData.type === 'income' ? 'income' : 'expenses'}`} className="back-link">
+        <Link to={`/${formData.type === 'income' ? 'income' : 'expenses'}`} className="back-link" id="back-link">
           Back to {formData.type === 'income' ? 'Income' : 'Expenses'}
         </Link>
       </div>

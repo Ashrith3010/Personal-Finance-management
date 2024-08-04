@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import client from '../apolloClient';
 import './styles/LoginRegister.css';
 
-const LOGIN_USER = gql`
+export const LOGIN_USER = gql`
   mutation Login($identifier: String!, $password: String!) {
     login(identifier: $identifier, password: $password) {
       accessToken
@@ -39,11 +39,9 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
+    <div className="login-container" id="login-page">
       <div className="login-card">
-        <div className="login-image">
-          <img src="C:/Users/I7738/Desktop/Git/final/abc.png" alt="Login Illustration" />
-        </div>
+        <div className="login-image"></div>
         <div className="login-form">
           <h2>Welcome back!</h2>
           <p>Please enter your details</p>
@@ -70,13 +68,6 @@ const Login = () => {
                 required
                 className="form-control"
               />
-            </div>
-            <div className="form-group">
-              <label className="checkbox-container">
-                <input type="checkbox" />
-                <span className="checkmark"></span>
-                Remember for 30 days
-              </label>
             </div>
             <button
               type="submit"

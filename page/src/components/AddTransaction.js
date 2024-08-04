@@ -85,36 +85,38 @@ const AddTransaction = () => {
   };
 
   return (
-    <div className="add-transaction">
-      <Header title="Add Transaction" />
-      <form onSubmit={handleSubmit} className="add-transaction-form">
-        <input
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="Description"
-          required
-        />
-        <input
-          type="number"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-          placeholder="Amount"
-          required
-          step="any"
-        />
-        <select value={type} onChange={(e) => setType(e.target.value)}>
-          <option value="income">Income</option>
-          <option value="expense">Expense</option>
-        </select>
-        <DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
-        <button type="submit">Add Transaction</button>
-      </form>
-      {message && (
-        <p className={`message ${message.includes('successfully') ? 'success' : 'error'}`}>
-          {message}
-        </p>
-      )}
+    <div className="add-edit-transaction-container" id="add-transaction-page">
+      <Header title="Add Transaction" className="header" />
+      <div className="add-transaction-content">
+        <form onSubmit={handleSubmit} className="add-transaction-form">
+          <input
+            type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Description"
+            required
+          />
+          <input
+            type="number"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            placeholder="Amount"
+            required
+            step="any"
+          />
+          <select value={type} onChange={(e) => setType(e.target.value)}>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+          <DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+          <button type="submit">Add Transaction</button>
+        </form>
+        {message && (
+          <p className={`message ${message.includes('successfully') ? 'success' : 'error'}`}>
+            {message}
+          </p>
+        )}
+      </div>
     </div>
   );
 };

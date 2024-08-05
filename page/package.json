@@ -6,8 +6,6 @@
     "@apollo/client": "^3.11.2",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@reduxjs/toolkit": "^2.2.6",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
     "graphql": "^16.9.0",
@@ -45,5 +43,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
+    "jest": "^27.5.1"
   }
 }

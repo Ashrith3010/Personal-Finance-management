@@ -66,7 +66,7 @@ const EditTransaction = () => {
           }
         });
         setMessage('Transaction updated successfully.');
-        setTimeout(() => navigate(`/${formData.type === 'income' ? 'income' : 'expenses'}`), 2000);
+        navigate(`/${formData.type === 'income' ? 'income' : 'expenses'}`);
       } catch (error) {
         console.error('Error updating transaction:', error);
         setMessage('Error updating transaction.');

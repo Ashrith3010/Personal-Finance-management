@@ -23,6 +23,12 @@
       "username": "Chandu",
       "email": "chandu1969@gmail.com",
       "password": "$2b$10$2dTVm3U0AZ/sXEG6ncFZRu0EAPMRL4WG95fJWvwMAeAw8Qhb78jKO"
+    },
+    {
+      "id": "1722855190786",
+      "username": "vishal",
+      "email": "vishal@gmail.com",
+      "password": "$2b$10$YAjSOFPSmwBiJFwpXSPjNOWdqhFeeKGyWB5Qh/xhCaFBcA3qjQ3XG"
     }
   ],
   "transactions": [
@@ -140,7 +146,7 @@
     },
     {
       "id": "1722662770647",
-      "description": "Adarsh 2",
+      "description": "aara",
       "amount": 789,
       "type": "expense",
       "userId": "1722355435618",
@@ -177,6 +183,46 @@
       "type": "expense",
       "userId": "1722355435618",
       "date": "2024-08-14"
+    },
+    {
+      "id": "1722856435495",
+      "description": "vivek",
+      "amount": 2000,
+      "type": "expense",
+      "userId": "1722855190786",
+      "date": "2024-08-24"
+    },
+    {
+      "id": "1722856465562",
+      "description": "Ashrith",
+      "amount": 1000,
+      "type": "expense",
+      "userId": "1722855190786",
+      "date": "2024-08-17"
+    },
+    {
+      "id": "1722856479126",
+      "description": "Adarsh",
+      "amount": 20000,
+      "type": "expense",
+      "userId": "1722855190786",
+      "date": "2024-08-17"
+    },
+    {
+      "id": "1722856629844",
+      "description": "home",
+      "amount": 999,
+      "type": "expense",
+      "userId": "1722855190786",
+      "date": "2024-08-05"
+    },
+    {
+      "id": "1722856646860",
+      "description": "rajesh",
+      "amount": 56789,
+      "type": "income",
+      "userId": "1722855190786",
+      "date": "2024-08-05"
     }
   ]
 }

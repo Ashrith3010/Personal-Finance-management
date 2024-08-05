@@ -12,7 +12,7 @@ jest.mock('react-router-dom', () => ({
 }));
 
 // Mock the Apollo Client
-jest.mock('../apolloClient', () => ({
+jest.mock('../../apolloClient', () => ({
   resetStore: jest.fn(),
 }));
 

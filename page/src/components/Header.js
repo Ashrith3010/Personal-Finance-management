@@ -17,7 +17,12 @@ const Header = ({ title }) => {
   };
 
   return (
-    <header className="header" id="main-header">
+    
+    <header className="header" id="main-header"> 
+    <div className="header-title">
+    <h1>{title}</h1>
+  </div>
+
       <nav className="header-nav">
         <Link to="/dashboard"><FaHome /> Dashboard</Link>
         <Link to="/income"><FaMoneyBillWave /> Income</Link>
@@ -25,9 +30,7 @@ const Header = ({ title }) => {
         <Link to="/add-transaction"><FaPlusCircle /> Add Transaction</Link>
         <button onClick={handleLogout}><FaSignOutAlt /> Logout</button>
       </nav>
-      <div className="header-title">
-        <h1>{title}</h1>
-      </div>
+     
     </header>
   );
 };

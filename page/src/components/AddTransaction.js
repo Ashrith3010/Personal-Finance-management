@@ -45,9 +45,8 @@ const AddTransaction = () => {
     },
     onCompleted: (data) => {
       setMessage('Transaction added successfully.');
-      setTimeout(() => {
         navigate(type === 'income' ? '/income' : '/expenses', { state: { refetch: true } });
-      }, 2000);
+    
     },
     onError: (error) => {
       console.error('Error saving transaction:', error);
@@ -89,6 +88,7 @@ const AddTransaction = () => {
       <Header title="Add Transaction" className="header" />
       <div className="add-transaction-content">
         <form onSubmit={handleSubmit} className="add-transaction-form">
+          <h2>Add Transaction</h2>
           <input
             type="text"
             value={description}

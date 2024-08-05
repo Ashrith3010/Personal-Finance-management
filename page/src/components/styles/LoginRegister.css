@@ -1,19 +1,18 @@
 .login-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  width:max-content;
   height: 100vh;
-  background-color: #f5f5f5;
+  width: 100vw;
+  background-color: white;
 }
 
 .login-card {
   display: flex;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  width: 900px;
-  height: 600px;
+  width: 100vw;
+  height: 100vh;
 }
 
 .login-image {
@@ -21,22 +20,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('/Users/nagashrithjanamanchi/Desktop/React project/final/Personal-Finance-management/page/src/components/styles/log.jpg') no-repeat center center;
+  background: url('C:\Users\I7738\Desktop\New folder\Personal-Finance-management\page\src\components\styles\log.jpg') no-repeat center center;
   background-size: contain; /* Adjust to fit the image without zooming */
-  background-color: #f0f0f0;
+ 
   overflow: hidden;
 }
 
 
 .login-form {
   flex: 1;
-  padding: 40px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-h2 {
+.login-form h2 {
+  align-self:self-start;
   margin: 0;
   font-size: 28px;
   color: #333;
@@ -44,28 +44,31 @@ h2 {
 }
 
 p {
-  color: #666;
+  color: #a6a5a5;
   margin-bottom: 30px;
 }
 
 .form-group {
   margin-bottom: 20px;
+  
 }
 
 label {
+  font-size: 20px;
   display: block;
   margin-bottom: 5px;
-  color: #333;
+  color: black;
   font-weight: 500;
 }
 
 .form-control {
-  width: 100%;
+  width: 70%;
   padding: 10px 0;
   border: none;
-  border-bottom: 1px solid #ddd;
-  font-size: 16px;
-  transition: border-color 0.3s;
+  border-bottom: 1px solid #f1eeee;
+  font-size: 18px;
+  transition: border-color 0.1s;
+ 
 }
 
 .form-control:focus {
@@ -74,7 +77,7 @@ label {
 }
 
 .submit-button {
-  width: 100%;
+  width: 70%;
   padding: 12px;
   background-color: #4a154b;
   color: white;
@@ -91,8 +94,9 @@ label {
 }
 
 .register-link, .login-link {
-  text-align: center;
+  text-align: left;
   margin-top: 20px;
+  margin-left: 130px;;
   font-size: 14px;
 }
 

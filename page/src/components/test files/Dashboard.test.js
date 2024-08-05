@@ -5,8 +5,8 @@ import { GET_DASHBOARD_DATA } from '../../graphql';
 import Dashboard from '../Dashboard';
 
 // Mock the Header and Savings components
-jest.mock('./Header', () => ({ title }) => <div data-testid="header">{title}</div>);
-jest.mock('./Savings', () => ({ userId }) => <div data-testid="savings">Savings for {userId}</div>);
+jest.mock('../Header', () => ({ title }) => <div data-testid="header">{title}</div>);
+jest.mock('../Savings', () => ({ userId }) => <div data-testid="savings">Savings for {userId}</div>);
 
 // Mock localStorage
 const localStorageMock = {

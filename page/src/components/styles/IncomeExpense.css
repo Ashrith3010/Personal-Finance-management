@@ -17,6 +17,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   background-color: #dbdad7;
+  border: 1px solid black;
+  max-height: 70vh; /* Set a maximum height */
+  overflow-y: auto;
+ 
 }
 
 .income-expense-header {
@@ -58,3 +62,123 @@ table th {
   font-weight: bold;
   font-size: 18px;
 }
+@media (max-width: 1200px) {
+  .income-expense {
+    margin-left: 5%;
+    background-size: 50%;
+  }
+ 
+  .income-expense-content {
+    max-width: 700px;
+    padding: 15px;
+  }
+ 
+  .filters select {
+    font-size: 14px;
+  }
+ 
+  table th, table td {
+    padding: 8px;
+  }
+ 
+  .edit-button, .delete-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+ 
+  .total {
+    font-size: 16px;
+  }
+}
+ 
+@media (max-width: 768px) {
+  .income-expense {
+    margin-left: 3%;
+    background-size: 60%;
+  }
+ 
+  .income-expense-content {
+    max-width: 90%;
+    padding: 10px;
+  }
+ 
+  .filters {
+    flex-direction: column;
+    gap: 5px;
+  }
+ 
+  .filters select {
+    font-size: 12px;
+  }
+ 
+  table th, table td {
+    padding: 6px;
+  }
+ 
+  .edit-button, .delete-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+ 
+  .total {
+    font-size: 14px;
+  }
+}
+ 
+@media (max-width: 480px) {
+  .income-expense {
+    margin-left: 0;
+    background-size: 80%;
+  }
+ 
+  .income-expense-content {
+    max-width: 100%;
+    padding: 5px;
+  }
+ 
+  .filters select {
+    font-size: 10px;
+  }
+ 
+  table th, table td {
+    padding: 4px;
+  }
+ 
+  .edit-button, .delete-button {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+ 
+  .total {
+    font-size: 12px;
+  }
+}
+ 
+/* More specific adjustments for small screens */
+@media (max-width: 360px) {
+  .income-expense {
+    background-size: 100%;
+  }
+ 
+  .income-expense-content {
+    padding: 3px;
+  }
+ 
+  .filters select {
+    font-size: 8px;
+  }
+ 
+  table th, table td {
+    padding: 3px;
+  }
+ 
+  .edit-button, .delete-button {
+    padding: 3px 6px;
+    font-size: 8px;
+  }
+ 
+  .total {
+    font-size: 10px;
+  }
+}
+ 
